@@ -33,8 +33,8 @@ RUN rm -rf /var/www/html && mkdir -p /var/lock/apache2 /var/run/apache2 /var/log
 # Apache + PHP requires preforking Apache for best results
 RUN a2dismod mpm_event && a2enmod mpm_prefork
 
-RUN mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist
-COPY apache2.conf /etc/apache2/apache2.conf
+# RUN mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist
+# COPY apache2.conf /etc/apache2/apache2.conf
 ##</apache2>##
 
 ENV PHP_INI_DIR /etc/php5/apache2
@@ -116,4 +116,10 @@ COPY apache2-foreground /usr/local/bin/
 WORKDIR /var/www/html
 
 EXPOSE 80
+
+ENV APACHE_LOCK_DIR /var/lock/apache2
+ENV APACHE_PID_FILE /var/run/apache2/apache2.pid
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
 CMD ["apache2-foreground"]
