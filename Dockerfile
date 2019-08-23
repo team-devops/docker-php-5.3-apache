@@ -93,6 +93,7 @@ RUN buildDeps=" \
             --enable-ftp \
             --enable-mbstring \
             --enable-mysqlnd \
+            --enable-zip \
             --with-mysql \
             --with-mysqli \
             --with-pdo-mysql \
