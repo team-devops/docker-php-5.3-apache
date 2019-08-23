@@ -72,6 +72,9 @@ RUN buildDeps=" \
                 libssl-dev \
                 libxml2-dev \
                 libpng-dev \
+                libaspell-dev \
+                libpspell-dev \
+                aspell \
                 xz-utils \
       " \
       && set -x \
@@ -97,6 +100,7 @@ RUN buildDeps=" \
             --with-openssl=/usr/local/ssl \
             --enable-soap \
             --with-png \
+            --with-pspell \
             --with-gd \
             --with-readline \
             --with-recode \
